@@ -7,16 +7,13 @@ import { laptop, mobile, tablet } from '../Responsive'
 
 
 
-const Div = styled.div`
+const Container = styled.div`
         background:  linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url("https://wallpaperaccess.com/full/4893798.jpg") center;
-
         background-size: cover;
         width:100vw;
         height:100vh;
         ${mobile({ marginBottom: '20px' })}
-        
         `;
-
 const FormSection = styled.div`
         ${mobile({ marginTop: '50px', marginBottom: '50px' })}
         ${tablet({ marginTop: '50px', marginBottom: '50px' })}
@@ -42,19 +39,18 @@ const Create = () => {
         setEmail(e.target.value)
     }
 
-    const submit = async (e) => {
+    const submit = (e) => {
         e.preventDefault();
-        await axios.post('https://631879d7ece2736550cb0a11.mockapi.io/users', {
+        axios.post('https://631879d7ece2736550cb0a11.mockapi.io/users', {
             name: name, username: username, email: email
         }).then(() => { navigate('/read') })
     }
 
 
     return (
-        <Div>
+        <Container>
             <Navbar />
             <FormSection className='container pb-5'>
-
                 <h1>Add User</h1>
                 <form onSubmit={submit}>
                     <div className="mb-3">
@@ -72,7 +68,7 @@ const Create = () => {
                     <button type="submit" className="btn btn-primary" >Submit</button>
                 </form>
             </FormSection>
-        </Div>
+        </Container>
     );
 }
 

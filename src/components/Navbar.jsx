@@ -109,11 +109,7 @@ const Navbar = () => {
         <MainContainer className='mb-5'>
             <Navbar1 className="navbar navbar-expand-lg navbar-dark bg-primary" >
                 <nav1 className="container">
-
-
                     <NavLink to='/' className="navbar-brand"><Logo>React Crud-App</Logo></NavLink>
-
-
                     <div className="navbar-collapse " >
                         <Ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
@@ -146,39 +142,24 @@ const Navbar = () => {
                             </li>
                         }
                     </Ul>
-
                 </nav1>
-
             </Navbar1>
-
-
-
-
             <Navbar2 className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <nav2 className="container">
-
-
                     <NavLink to='/' className="navbar-brand"><Logo>React Crud-App</Logo></NavLink>
-
-
                     <NavLink to="/adduser" className="nav-link " ><AddUserButton className="btn btn-outline-light">Add User</AddUserButton></NavLink>
-
-
                     <HamburgerButton style={{ textAlign: 'center' }}>
                         <button class="btn btn-outline-light"
                             onClick={handleHamburger}>
                             <div>
-                                {menubar === false && <div>☰</div>}
-                                {menubar === true && <div>X</div>}
+                                {!menubar && <div>☰</div>}
+                                {menubar && <div>X</div>}
                             </div>
                         </button>
                     </HamburgerButton>
-
                 </nav2>
             </Navbar2>
-
-            {
-                menubar === true &&
+            {menubar &&
                 <Bar>
                     <Li>
                         <NavLink to="/" className="nav-link" >Home</NavLink>

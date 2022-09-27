@@ -8,11 +8,9 @@ import styled from 'styled-components'
 
 const Container = styled.div`
             background:  linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url("https://wallpaperaccess.com/full/4893798.jpg") center;
-
             background-size: cover;
             width:100vw;
             height:100vh;
-           
             `;
 
 const Update = () => {
@@ -36,31 +34,26 @@ const Update = () => {
         setEmail(e.target.value)
     }
 
-
-
-    const loadUsers = async () => {
-        await axios.get(`https://631879d7ece2736550cb0a11.mockapi.io/users/${id}`)
-
+    const loadUser = () => {
+        axios.get(`https://631879d7ece2736550cb0a11.mockapi.io/users/${id}`)
             .then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
                 setUser(res.data)
             })
             .catch((error) => {
                 setError(error)
             })
-
     }
 
-    const submit = async (e) => {
+    const submit = (e) => {
         e.preventDefault();
-        await axios.put(`https://631879d7ece2736550cb0a11.mockapi.io/users/${id}`, {
+        axios.put(`https://631879d7ece2736550cb0a11.mockapi.io/users/${id}`, {
             name: name, username: username, email: email
         }).then(() => navigate('/read'))
     }
 
-
     useEffect(() => {
-        loadUsers();
+        loadUser();
     }, [])
 
     if (error) {
@@ -76,7 +69,6 @@ const Update = () => {
         <Container>
             <Navbar />
             <div className='container pb-5'>
-
                 <h1>Update User</h1>
                 <form>
                     <div className="mb-3">
