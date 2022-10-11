@@ -53,7 +53,6 @@ const Bar = styled.div`
         background-color: white;
         display: none;
         ${laptop({ display: 'block' })};
-
         `;
 
 const Li = styled.div`
@@ -65,7 +64,6 @@ const Navbar = () => {
     const [menubar, setMenubar] = useState(false)
     const navigate = useNavigate();
     const userLoggedIn = localStorage.getItem('login');
-    console.log(userLoggedIn)
 
 
     const Logout = () => {
@@ -84,7 +82,6 @@ const Navbar = () => {
         if (userLoggedIn) {
             console.log('logged in')
             alert('You are already logged in!')
-            // navigate('/crud')
         } else {
             navigate('/login')
         }
@@ -93,7 +90,6 @@ const Navbar = () => {
     const Register = () => {
         if (userLoggedIn) {
             alert('You are Logged in! To create New Account you have to logout first.')
-            // navigate('/crud')
         } else {
             navigate('/register')
         }
