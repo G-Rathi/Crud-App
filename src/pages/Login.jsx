@@ -96,6 +96,10 @@ const Login = (props) => {
                 } else {
                         localStorage.setItem('login', true)
                         navigate(-2)
+                        setTimeout(() => {
+                                localStorage.removeItem('login')
+                                window.location.reload()
+                        }, 9000)
                 }
         }
 
