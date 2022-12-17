@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -12,7 +12,7 @@ const Container = styled.div`
         background-size: cover;
         width:100vw;
         height:100vh;
-        ${mobile({ marginBottom: '20px' })} 
+        ${mobile({ marginBottom: '20px' })}
         `;
 const FormSection = styled.div`
         ${mobile({ marginTop: '50px', marginBottom: '50px' })}
@@ -22,41 +22,28 @@ const FormSection = styled.div`
 
 
 
-
-const initialState = {
-    name: '',
-    username: '',
-    email: '',
-}
-const reducer = (state, action) => {
-    switch (action.type) {
-        case 'inputName':
-            return { ...state, name: action.value };
-        case 'inputUsername':
-            return { ...state, username: action.value };
-        case 'inputEmail':
-            return { ...state, email: action.value };
-        default:
-            return state
-    }
-}
-
 const Create = () => {
+    const [name, setName] = useState()
+    const [username, setUsername] = useState()
+    const [email, setEmail] = useState()
     const navigate = useNavigate();
-    const [state, dispatch] = useReducer(reducer, initialState)
 
-    const submit = async (e) => {
+
+    const inputName = (e) => {
+        setName(e.target.value)
+    }
+    const inputUsername = (e) => {
+        setUsername(e.target.value)
+    }
+    const inputEmail = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const submit = (e) => {
         e.preventDefault();
-        try {
-            const userDetail = await axios.post('https://631879d7ece2736550cb0a11.mockapi.io/users', {
-                name: state.name, username: state.username, email: state.email
-            })
-            console.log(userDetail)
-            navigate('/read')
-        }
-        catch (error) {
-            console.log(error.message)
-        }
+        axios.post('https://631879d7ece2736550cb0a11.mockapi.io/users', {
+            name: name, username: username, email: email
+        }).then(() => { navigate('/read') })
     }
 
 
@@ -68,21 +55,21 @@ const Create = () => {
                 <form onSubmit={submit}>
                     <div className="mb-3">
                         <label className="form-label">Name</label>
-                        <input type="text" className="form-control" onChange={(e) => dispatch({ type: 'inputName', value: e.target.value })} />
+                        <input type="text" className="form-control" onChange={(e) => inputName(e)} />
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Username</label>
-                        <input type="text" className="form-control" onChange={(e) => dispatch({ type: 'inputUsername', value: e.target.value })} />
+                        <input type="text" className="form-control" onChange={(e) => inputUsername(e)} />
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Email</label>
-                        <input type="email" className="form-control" onChange={(e) => dispatch({ type: 'inputEmail', value: e.target.value })} />
+                        <input type="email" className="form-control" onChange={(e) => inputEmail(e)} />
                     </div>
                     <button type="submit" className="btn btn-primary" >Submit</button>
                 </form>
             </FormSection>
         </Container>
-    )
+    );
 }
 
 export default Create

@@ -53,6 +53,7 @@ const Bar = styled.div`
         background-color: white;
         display: none;
         ${laptop({ display: 'block' })};
+
         `;
 
 const Li = styled.div`
@@ -80,8 +81,8 @@ const Navbar = () => {
 
     const LoggedIn = () => {
         if (userLoggedIn) {
-            console.log('logged in')
             alert('You are already logged in!')
+            // navigate('/crud')
         } else {
             navigate('/login')
         }
@@ -90,6 +91,7 @@ const Navbar = () => {
     const Register = () => {
         if (userLoggedIn) {
             alert('You are Logged in! To create New Account you have to logout first.')
+            // navigate('/crud')
         } else {
             navigate('/register')
         }
@@ -104,7 +106,7 @@ const Navbar = () => {
     return (
         <MainContainer className='mb-5'>
             <Navbar1 className="navbar navbar-expand-lg navbar-dark bg-primary" >
-                <nav1 className="container">
+                <div className="container">
                     <NavLink to='/' className="navbar-brand"><Logo>React Crud-App</Logo></NavLink>
                     <div className="navbar-collapse " >
                         <Ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -138,14 +140,14 @@ const Navbar = () => {
                             </li>
                         }
                     </Ul>
-                </nav1>
+                </div>
             </Navbar1>
             <Navbar2 className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <nav2 className="container">
+                <div className="container">
                     <NavLink to='/' className="navbar-brand"><Logo>React Crud-App</Logo></NavLink>
                     <NavLink to="/adduser" className="nav-link " ><AddUserButton className="btn btn-outline-light">Add User</AddUserButton></NavLink>
                     <HamburgerButton style={{ textAlign: 'center' }}>
-                        <button class="btn btn-outline-light"
+                        <button className="btn btn-outline-light"
                             onClick={handleHamburger}>
                             <div>
                                 {!menubar && <div>☰</div>}
@@ -153,7 +155,7 @@ const Navbar = () => {
                             </div>
                         </button>
                     </HamburgerButton>
-                </nav2>
+                </div>
             </Navbar2>
             {menubar &&
                 <Bar>
