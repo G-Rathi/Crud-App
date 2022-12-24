@@ -33,6 +33,9 @@ const Home = () => {
                 <h4>
                     <p>Once you have clicked on 'Read' link, a 'Users List' will appear on Screen, You can 'Edit' user details and also 'Delete' user. </p>
                 </h4>
+                <h4>
+                    <p>The User will be auto logout after 9 seconds.</p>
+                </h4>
             </div>
         </Container>
     )

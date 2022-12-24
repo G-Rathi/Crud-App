@@ -82,7 +82,11 @@ const Login = (props) => {
                         passwordHandler();
                 } else {
                         localStorage.setItem('login', true)
-                        navigate(-2)
+                        navigate(-1)
+                        setTimeout(() => {
+                                localStorage.removeItem('login')
+                                window.location.reload()
+                        }, 9000)
                 }
         }
 
