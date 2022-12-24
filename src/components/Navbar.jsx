@@ -80,28 +80,14 @@ const Navbar = () => {
     }
 
     const LoggedIn = () => {
-        if (userLoggedIn) {
-            alert('You are already logged in!')
-            // navigate('/crud')
-        } else {
-            navigate('/login')
-        }
+        (userLoggedIn) ? alert('You are already logged in!') : navigate('/login')
     }
 
     const Register = () => {
-        if (userLoggedIn) {
-            alert('You are Logged in! To create New Account you have to logout first.')
-            // navigate('/crud')
-        } else {
-            navigate('/register')
-        }
+        (userLoggedIn) ? alert('You are Logged in! To create New Account you have to logout first.') : navigate('/register')
     }
 
-
-    const handleHamburger = (e) => {
-        e.preventDefault();
-        setMenubar(!menubar);
-    }
+    const handleHamburger = () => setMenubar(!menubar);
 
     return (
         <MainContainer className='mb-5'>

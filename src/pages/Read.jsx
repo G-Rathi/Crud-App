@@ -41,8 +41,7 @@ const Read = () => {
             .catch((error) => { setError(error) })
     }
 
-    const handleDelete = (e, id) => {
-        e.preventDefault();
+    const handleDelete = (id) => {
         axios.delete(`https://631879d7ece2736550cb0a11.mockapi.io/users/${id}`)
             .then(() => loadUsers())
             .catch((error) => { setError(error) })
@@ -55,8 +54,6 @@ const Read = () => {
     if (error) {
         return `Error:${error.message}`
     }
-
-
 
     return (
         <Container>
@@ -83,7 +80,7 @@ const Read = () => {
                                     <td>{user.email}</td>
                                     <Td>
                                         <Link to={`/update/${user.id}`}><Button className="btn btn-primary mx-2">Edit</Button></Link>
-                                        <Button className="btn btn-danger" onClick={(e) => handleDelete(e, user.id)}>Delete</Button>
+                                        <Button className="btn btn-danger" onClick={() => handleDelete(user.id)}>Delete</Button>
                                     </Td>
                                 </tr>
                             ))

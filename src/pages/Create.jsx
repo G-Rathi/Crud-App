@@ -28,16 +28,9 @@ const Create = () => {
     const [email, setEmail] = useState()
     const navigate = useNavigate();
 
-
-    const inputName = (e) => {
-        setName(e.target.value)
-    }
-    const inputUsername = (e) => {
-        setUsername(e.target.value)
-    }
-    const inputEmail = (e) => {
-        setEmail(e.target.value)
-    }
+    const inputName = (e) => setName(e.target.value)
+    const inputUsername = (e) => setUsername(e.target.value)
+    const inputEmail = (e) => setEmail(e.target.value)
 
     const submit = (e) => {
         e.preventDefault();
@@ -45,7 +38,6 @@ const Create = () => {
             name: name, username: username, email: email
         }).then(() => { navigate('/read') })
     }
-
 
     return (
         <Container>

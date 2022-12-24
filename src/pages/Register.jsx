@@ -64,15 +64,8 @@ const Buttons = styled.div`
 const Register = () => {
     const navigate = useNavigate('');
 
-    function create(e) {
-        e.preventDefault();
-        navigate('/login');
-    }
-
-    function backtohome(e) {
-        e.preventDefault();
-        navigate('/')
-    }
+    const create = () => navigate('/login');
+    const backtohome = () => navigate('/')
 
     return (
         <Container>

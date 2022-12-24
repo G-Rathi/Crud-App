@@ -22,25 +22,14 @@ const Update = () => {
     const navigate = useNavigate();
     const { id } = useParams();
 
-
-    const changeName = (e) => {
-        setName(e.target.value)
-    }
-    const changeUsername = (e) => {
-        setUsername(e.target.value)
-    }
-    const changeEmail = (e) => {
-        setEmail(e.target.value)
-    }
+    const changeName = (e) => setName(e.target.value)
+    const changeUsername = (e) => setUsername(e.target.value)
+    const changeEmail = (e) => setEmail(e.target.value)
 
     const loadUser = () => {
         axios.get(`https://631879d7ece2736550cb0a11.mockapi.io/users/${id}`)
-            .then((res) => {
-                setUser(res.data)
-            })
-            .catch((error) => {
-                setError(error)
-            })
+            .then((res) => setUser(res.data))
+            .catch((error) => setError(error))
     }
 
     const submit = (e) => {
@@ -50,17 +39,18 @@ const Update = () => {
         }).then(() => navigate('/read'))
     }
 
+    const handleBack = (e) => {
+        e.preventDefault()
+        navigate(-1)
+    }
+
+
     useEffect(() => {
         loadUser();
     }, [])
 
     if (error) {
         return `Error:${error.message}`
-    }
-
-    const handleBack = (e) => {
-        e.preventDefault();
-        navigate(-1)
     }
 
     return (

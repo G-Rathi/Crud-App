@@ -65,27 +65,14 @@ const Login = (props) => {
         const [passwordErr, setPasswordErr] = useState(false);
         const navigate = useNavigate('');
 
-        const usernameLength = (e) => {
-                setUsername(e.target.value.length)
-        }
-        const passwordLength = (e) => {
-                setPassword(e.target.value.length)
-        }
+        const usernameLength = (e) => setUsername(e.target.value.length)
+        const passwordLength = (e) => setPassword(e.target.value.length)
 
         function usernameHandler() {
-                if (username <= 3) {
-                        setUsernameErr(true)
-                } else {
-                        setUsernameErr(false)
-                }
+                (username <= 3) ? setUsernameErr(true) : setUsernameErr(false)
         }
-
         function passwordHandler() {
-                if (password < 5) {
-                        setPasswordErr(true)
-                } else {
-                        setPasswordErr(false)
-                }
+                (password < 5) ? setPasswordErr(true) : setPasswordErr(false)
         }
 
         function submit(e) {
@@ -96,10 +83,6 @@ const Login = (props) => {
                 } else {
                         localStorage.setItem('login', true)
                         navigate(-2)
-                        setTimeout(() => {
-                                localStorage.removeItem('login')
-                                window.location.reload()
-                        }, 9000)
                 }
         }
 
